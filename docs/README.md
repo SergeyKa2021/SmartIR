@@ -52,7 +52,7 @@ If you want HACS to handle installation and updates, add SmartIR as a [custom re
 
 ## Controller setup instructions
 lick on the links below for instructions on how to configure each platform.
-* [ESPHome]{/docs/ESPHOME.md)
+* [ESPHome](/docs/ESPHOME.md)
 <br><br>
 
 ## Platform setup instructions
