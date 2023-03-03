@@ -50,6 +50,10 @@ smartir:
 If you want HACS to handle installation and updates, add SmartIR as a [custom repository](https://hacs.xyz/docs/faq/custom_repositories/). In this case, it is recommended that you turn off automatic updates, as above.
 <br><br>
 
+## Controller setup instructions
+lick on the links below for instructions on how to configure each platform.
+* [ESPHome]{/docs/ESPHOME.md)
+<br><br>
 
 ## Platform setup instructions
 Click on the links below for instructions on how to configure each platform.
