@@ -10,24 +10,41 @@ esphome:
 
 api:
   services:
-    - service: send_ir_command
-      id: ir_trx
+
+# Service for Panasonic remote
+    - service: send_ir_panasonic
+      id: ir_panasonic
       variables:
         ir_address: int
         ir_command: int
-        ir_enc_protocol: string
-        ir_pronto_data: string
-        ir_raw_code: int[] 
       then:
-        - if:
-            condition:
-              lambda: 'return ir_enc_protocol == "Panasonic";'
-            then:
-              - remote_transmitter.transmit_panasonic
-                address: !lambda 'return ir_address;' 
-                command: !lambda 'return ir_command;' 
-            else: 
+        - remote_transmitter.transmit_panasonic
+            address: !lambda 'return ir_address;' 
+            command: !lambda 'return ir_command;' 
+
+# Service for Raw remote
+- service: send_ir_raw
+      id: ir_raw
+      variables:
+        ir_raw_code: int[]
+      then:
+        - remote_transmitter.transmit_raw
+            code: !lambda 'return ir_raw_code;' 
+ 
+# Service for Raw remote
+- service: send_ir_nec
+      id: ir_nec
+      variables:
+        ir_address: int
+        ir_command: int
+      then:
+        - remote_transmitter.transmit_panasonic
+            address: !lambda 'return ir_address;' 
+            command: !lambda 'return ir_command;' 
+
+#       ir_pronto_data: string
       
+
 remote_transmitter:
   pin: GPIO14
   carrier_duty_percent: 50%
