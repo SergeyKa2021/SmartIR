@@ -13,7 +13,6 @@ api:
 
 # Service for Panasonic remote
     - service: send_ir_panasonic
-      id: ir_panasonic
       variables:
         ir_address: int
         ir_command: int
@@ -24,16 +23,14 @@ api:
 
 # Service for Raw remote
     - service: send_ir_raw
-      id: ir_raw
       variables:
         ir_raw_code: int[]
       then:
         - remote_transmitter.transmit_raw:
             code: !lambda 'return ir_raw_code;' 
  
-# Service for Raw remote
+# Service for Nec remote
     - service: send_ir_nec
-      id: ir_nec
       variables:
         ir_address: int
         ir_command: int
