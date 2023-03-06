@@ -18,7 +18,7 @@ api:
         ir_address: int
         ir_command: int
       then:
-        - remote_transmitter.transmit_panasonic
+        - remote_transmitter.transmit_panasonic:
             address: !lambda 'return ir_address;' 
             command: !lambda 'return ir_command;' 
 
@@ -28,7 +28,7 @@ api:
       variables:
         ir_raw_code: int[]
       then:
-        - remote_transmitter.transmit_raw
+        - remote_transmitter.transmit_raw:
             code: !lambda 'return ir_raw_code;' 
  
 # Service for Raw remote
@@ -38,7 +38,7 @@ api:
         ir_address: int
         ir_command: int
       then:
-        - remote_transmitter.transmit_panasonic
+        - remote_transmitter.transmit_panasonic:
             address: !lambda 'return ir_address;' 
             command: !lambda 'return ir_command;' 
 
