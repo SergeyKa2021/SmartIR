@@ -22,7 +22,7 @@ api:
         if (ir_inc_protocol = 'Panasonic') {
           - remote_transmitter.transmit_panasonic
               address: !lambda 'return ir_address;' 
-              command:!lambda 'return ir_command;' 
+              command: !lambda 'return ir_command;' 
             } else {
             } 
       
@@ -30,3 +30,4 @@ remote_transmitter:
   pin: GPIO14
   carrier_duty_percent: 50%
 ```
+
