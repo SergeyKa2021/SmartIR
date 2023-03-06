@@ -19,12 +19,14 @@ api:
         ir_pronto_data: string
         ir_raw_code: int[] 
       then:
-        if (ir_enc_protocol = 'Panasonic') {
-          - remote_transmitter.transmit_panasonic
-              address: !lambda 'return ir_address;' 
-              command: !lambda 'return ir_command;' 
-            } else {
-            } 
+        - if:
+            condition:
+              lambda: 'return ir_enc_protocol == "Panasonic";'
+            then:
+              - remote_transmitter.transmit_panasonic
+                address: !lambda 'return ir_address;' 
+                command: !lambda 'return ir_command;' 
+            else: 
       
 remote_transmitter:
   pin: GPIO14
