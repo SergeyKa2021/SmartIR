@@ -23,7 +23,7 @@ api:
             command: !lambda 'return ir_command;' 
 
 # Service for Raw remote
-- service: send_ir_raw
+    - service: send_ir_raw
       id: ir_raw
       variables:
         ir_raw_code: int[]
@@ -32,7 +32,7 @@ api:
             code: !lambda 'return ir_raw_code;' 
  
 # Service for Raw remote
-- service: send_ir_nec
+    - service: send_ir_nec
       id: ir_nec
       variables:
         ir_address: int
