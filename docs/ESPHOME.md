@@ -10,23 +10,22 @@ esphome:
 
 api:
   services:
-    - service: start_effect
+    - service: send_ir_command
+      id: ir_trx
       variables:
-        my_brightness: int
-        my_effect: string
+        ir_address: int
+        ir_command: int
+        ir_enc_protocol: string
+        ir_pronto_data: string
+        ir_raw_code: int[] 
       then:
-        - light.turn_on:
-            id: my_light
-            brightness: !lambda 'return my_brightness;'
-            effect: !lambda 'return my_effect;'
-    - service: send_raw_command
-      variables:
-        enc_proto: string
-        command: int[]
-      then:
-        - remote_transmitter.transmit_raw:
-            code: !lambda 'return command;'
-
+        if (ir_inc_protocol = 'Panasonic') {
+          - remote_transmitter.transmit_panasonic
+              address: !lambda 'return ir_address;' 
+              command:!lambda 'return ir_command;' 
+            } else {
+            } 
+      
 remote_transmitter:
   pin: GPIO14
   carrier_duty_percent: 50%
