@@ -19,7 +19,7 @@ api:
         ir_pronto_data: string
         ir_raw_code: int[] 
       then:
-        if (ir_inc_protocol = 'Panasonic') {
+        if (ir_enc_protocol = 'Panasonic') {
           - remote_transmitter.transmit_panasonic
               address: !lambda 'return ir_address;' 
               command: !lambda 'return ir_command;' 
